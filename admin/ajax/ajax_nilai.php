@@ -13,8 +13,27 @@ if($_GET['action'] == "table_data"){
       $row[] = $no;
       $row[] = $r['nis'];
       $row[] = $r['nama'];
-      $row[] = $n['jml_benar'];		
-      $row[] = $n['nilai'];
+
+      $jbenar = '<table>';
+      foreach(json_decode($n['jml_benar'], true) as $jkey => $jvalue) {
+         $type = mysqli_fetch_array(mysqli_query($mysqli, "SELECT * FROM soal_type WHERE id = '$jkey'"));
+         $jbenar .= '<tr><td>' . $type['name'] . ' (' . $jvalue .')</td></tr>';
+      }
+      $jbenar .= '</table>';
+
+      $nilai = '<table>';
+      $status = '<table>';
+      foreach(json_decode($n['nilai'], true) as $nkey => $nvalue) {
+         $type = mysqli_fetch_array(mysqli_query($mysqli, "SELECT * FROM soal_type WHERE id = '$nkey'"));
+         $nilai .= '<tr><td>' . $type['name'] . ' (' . $nvalue .')</td></tr>';
+         $status .= '<tr><td>' . $type['name'] . ' (' . $nvalue > $type['threshold'] ? 'Lulus' : 'Tidak Lulus' .')</td></tr>';
+      }
+      $nilai .= '</table>';
+      $status .= '</table>';
+
+      $row[] = $jbenar;		
+      $row[] = $nilai;
+      $row[] = $status;
       $data[] = $row;
    }
    $output = array("data" => $data);
