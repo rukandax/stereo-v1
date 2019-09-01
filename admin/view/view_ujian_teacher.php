@@ -2,7 +2,7 @@
 
 <?php
 session_start();
-if(empty($_SESSION['username']) or empty($_SESSION['password']) or $_SESSION['leveluser']!="operator"){
+if(empty($_SESSION['username']) or empty($_SESSION['password']) or ($_SESSION['leveluser']!="operator" and $_SESSION['leveluser']!="admin")){
    header('location: login.php');
 }
 
