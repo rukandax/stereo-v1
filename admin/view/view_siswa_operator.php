@@ -13,5 +13,5 @@ include "../../library/function_form.php";
 create_title("list-alt", "Manajemen Peserta");
 create_button("success", "refresh", "Refresh", "btn-refresh", "refresh_data()");
 
-create_table(array("NIP", "Nama Peserta", "Password", "Kelas", "Status", "Aksi"));
+create_table(array("NIP", "Nama Peserta", "Password", "Divisi", "Status", "Aksi"));
 ?>

@@ -39,7 +39,6 @@ function form_edit(id){
 			
          $('#id').val(data.id_ujian);
          $('#judul').val(data.judul);
-         $('#mapel').val(data.nama_mapel);
          $('#tanggal').val(data.tanggal);
          $('#waktu').val(data.waktu);
          $('#jml_soal').val(data.jml_soal);

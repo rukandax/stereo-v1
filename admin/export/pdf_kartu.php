@@ -43,7 +43,7 @@ while($r = mysqli_fetch_array($query)){
 </tr>
 				
 <tr><td>Nama</td><td>: $r[nama]</td></tr>
-<tr><td>Kelas</td><td>: $kls[kelas]</td></tr>
+<tr><td>Divisi</td><td>: $kls[kelas]</td></tr>
 <tr><td>Username</td><td>: <b>$r[nis]</b></td></tr>
 <tr><td>Password</td><td>: <b>$password</b></td></tr>
 

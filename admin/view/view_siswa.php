@@ -19,7 +19,7 @@ create_button("primary", "import", "Import", "btn-import", "form_import()");
 create_button("info", "print", "Cetak Kartu", "btn-print", "form_print()");
 
 //Membuat header dan footer tabel
-create_table(array("NIP", "Nama Peserta", "Password", "Kelas", "Aksi"));
+create_table(array("NIP", "Nama Peserta", "Password", "Divisi", "Aksi"));
 
 //Membuat form tambah dan edit data
 open_form("modal_siswa", "return save_data()");
@@ -31,7 +31,7 @@ open_form("modal_siswa", "return save_data()");
    while($rk = mysqli_fetch_array($qkelas)){
       $list[] = array($rk['id_kelas'], $rk['kelas']);
    }
-   create_combobox("Kelas", "kelas", $list, 4, "", "required");
+   create_combobox("Divisi", "kelas", $list, 4, "", "required");
 close_form();
 
 //Membuat form cetak kartu
@@ -41,7 +41,7 @@ open_form("modal_print", "return print_data()");
    while($rk = mysqli_fetch_array($qkelas)){
       $list[] = array($rk['id_kelas'], $rk['kelas']);
    }
-   create_combobox("Kelas", "kelas_print", $list, 4, "", "required");
+   create_combobox("Divisi", "kelas_print", $list, 4, "", "required");
 close_form("print", "Print");
 
 //Membuat form import
@@ -52,6 +52,6 @@ open_form("modal_import", "return import_data()");
    while($rk = mysqli_fetch_array($qkelas)){
       $list[] = array($rk['id_kelas'], $rk['kelas']);
    }
-   create_combobox("Kelas", "kelas_import", $list, 4, "", "required");
+   create_combobox("Divisi", "kelas_import", $list, 4, "", "required");
 close_form("import", "Import");
 ?>

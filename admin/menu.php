@@ -21,8 +21,8 @@ if($_SESSION['leveluser'] == "admin"){
    echo menu_admin("view/view_ujian.php", "edit", "Ujian");
    echo menu_admin("view/view_siswa.php", "list-alt", "Peserta");
    echo menu_admin("view/view_user.php", "user", "Admin");
-   echo menu_admin("view/view_kelas.php", "signal", "Kelas");
-   echo menu_admin("view/view_klsujian.php", "sort-by-attributes", "Kelas Ujian");
+   echo menu_admin("view/view_kelas.php", "signal", "Divisi");
+   echo menu_admin("view/view_klsujian.php", "sort-by-attributes", "Divisi Ujian");
 }
 
 elseif($_SESSION['leveluser'] == "operator"){
@@ -30,7 +30,7 @@ elseif($_SESSION['leveluser'] == "operator"){
    echo menu_admin("view/view_ujian.php", "edit", "Ujian");
    echo menu_admin("view/view_siswa.php", "list-alt", "Peserta");
    echo menu_admin("view/view_ujian_teacher.php", "edit", "Soal");
-   echo menu_admin("view/view_klsujian.php", "sort-by-attributes", "Kelas Ujian");
+   echo menu_admin("view/view_klsujian.php", "sort-by-attributes", "Divisi Ujian");
    echo menu_admin("view/view_ujian_operator.php", "edit", "Aktifasi Ujian");
    echo menu_admin("view/view_siswa_operator.php", "list-alt", "Status Peserta");
 }

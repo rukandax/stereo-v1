@@ -19,20 +19,11 @@ create_title("edit", "Manajemen Ujian");
 create_button("success", "plus-sign", "Tambah", "btn-add", "form_add()");
 
 //membuat header dan footer tabel
-create_table(array("Judul", "Materi", "Tanggal", "Waktu", "Jml. Soal", "Aksi"));
+create_table(array("Judul", "Tanggal", "Waktu", "Jml. Soal", "Aksi"));
 
 //membuat form tambah dan edit data
 open_form("modal_ujian", "return save_data()");
    create_textbox("Judul", "judul", "text", 4, "", "required");
-
-   $listmateri = array();
-   $listmateri[] = array('General', 'General');
-   $listmateri[] = array('Product Knowledge', 'Product Knowledge');
-   $listmateri[] = array('Credit Process & Analyst', 'Credit Process & Analyst');
-   $listmateri[] = array('Internal Policy', 'Internal Policy');
-
-   create_combobox("Materi", "mapel", $listmateri, 4, "", "required");
-
    create_textbox("Tanggal", "tanggal", "text", 4, "datepicker", "required");
    create_textbox("Waktu (menit)", "waktu", "number", 2, "", "required");
    create_textbox("Jml. Soal", "jml_soal", "number", 2, "", "required");

@@ -17,7 +17,7 @@ if($_GET['action'] == "table_data"){
 		
       $row = array();
       $row[] = $no;
-      $row[] = $r['judul'] . ' - ' . $r['nama_mapel'];
+      $row[] = $r['judul'];
       $row[] = $label;
       $row[] = create_action($r['id_ujian'], true, false);
       $data[] = $row;

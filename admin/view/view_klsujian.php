@@ -12,10 +12,10 @@ include "../../library/function_view.php";
 include "../../library/function_form.php";
 
 //Membuat judul
-create_title("sort-by-attributes", "Manajemen Kelas Per Ujian");
+create_title("sort-by-attributes", "Manajemen Divisi Per Ujian");
 
 //Membuat header dan footer tabel
-create_table(array("Judul Ujian", "Kelas", "Aksi"));
+create_table(array("Judul Ujian", "Divisi", "Aksi"));
 
 //Membuat form edit data
 open_form("modal_klsujian", "return save_data()");
@@ -24,6 +24,6 @@ open_form("modal_klsujian", "return save_data()");
    while($rk = mysqli_fetch_array($qkelas)){
       $list[] = array($rk['id_kelas'], $rk['kelas']);
    }
-   create_checkbox("Kelas", "kelas", $list);	
+   create_checkbox("Divisi", "kelas", $list);	
 close_form();
 ?>

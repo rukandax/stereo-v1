@@ -3,10 +3,12 @@ var save_method, table;
 //Menampilkan data dengan plugin dataTable
 $(function(){
    var ujian = $('#id_ujian').val();
+   var type = $('#id_type').val();
+
    table = $('.table').DataTable({
       "processing" : true,
       "ajax" : {
-         "url" : "ajax/ajax_soal.php?action=table_data&ujian="+ujian,
+         "url" : "ajax/ajax_soal.php?action=table_data&ujian="+ujian+"&type="+type,
          "type" : "POST"
       }
    });
@@ -55,8 +57,10 @@ function form_edit(id){
 //Ketika tombol simpan pada modal diklik
 function save_data(){
    ujian = $('#id_ujian').val();
+   type = $('#id_type').val();
+
    if(save_method == "add") 
-      url = "ajax/ajax_soal.php?action=insert&ujian="+ujian;
+      url = "ajax/ajax_soal.php?action=insert&ujian="+ujian+"&type="+type;
    else url = "ajax/ajax_soal.php?action=update";
 
    $.ajax({

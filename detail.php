@@ -20,12 +20,8 @@ $ujian = mysqli_fetch_array(mysqli_query($mysqli, "SELECT * FROM ujian WHERE id_
    <div class="col-md-9">: <b><?= $_SESSION['namalengkap']; ?> </b></div>
 </div><br/>
 <div class="row">
-   <div class="col-md-3">Kelas</div>
+   <div class="col-md-3">Divisi</div>
    <div class="col-md-9">: <b><?= $kelas['kelas']; ?></b></div>
-</div><br/>
-<div class="row">
-   <div class="col-md-3">Materi</div>
-   <div class="col-md-9">: <b><?= $ujian['nama_mapel']; ?></b></div>
 </div><br/>
 <div class="row">
    <div class="col-md-3">Jml. Soal</div>

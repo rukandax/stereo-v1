@@ -13,7 +13,6 @@ if($_GET['action'] == "table_data"){
       $row = array();
       $row[] = $no;
       $row[] = $r['judul'];
-      $row[] = $r['nama_mapel'];
       $row[] = tgl_indonesia($r['tanggal']);
       $row[] = $r['waktu'].' menit';
       $row[] = $r['jml_soal'];
@@ -37,7 +36,6 @@ elseif($_GET['action'] == "form_data"){
 elseif($_GET['action'] == "insert"){
    mysqli_query($mysqli, "INSERT INTO ujian SET
       judul = '$_POST[judul]',
-      nama_mapel = '$_POST[mapel]',
       tanggal = '$_POST[tanggal]',
       waktu = '$_POST[waktu]',
       jml_soal = '$_POST[jml_soal]'");	
@@ -47,7 +45,6 @@ elseif($_GET['action'] == "insert"){
 elseif($_GET['action'] == "update"){
    mysqli_query($mysqli, "UPDATE ujian SET
       judul = '$_POST[judul]',
-      nama_mapel = '$_POST[mapel]',
       tanggal = '$_POST[tanggal]',
       waktu = '$_POST[waktu]',
       jml_soal = '$_POST[jml_soal]'

@@ -30,7 +30,7 @@ else{
    <tr>
       <th>No</th>
       <th>Materi</th>
-      <th>Kelas</th>
+      <th>Divisi</th>
       <th>Jml. Soal</th>
       <th>Waktu</th>
       <th>Aksi</th>
@@ -48,7 +48,6 @@ else{
 		
       echo'<tr>
          <td>'.$no.'</td>
-         <td>'.$r['nama_mapel'].'</td>
          <td>'.implode($kelas_ujian, ", ").'</td>
          <td>'.$r['jml_soal'].'</td>
         <td>'.$r['waktu'].' menit</td>

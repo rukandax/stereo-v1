@@ -21,19 +21,15 @@ create_button("primary", "import", "Import", "btn-import", "form_import()");
 
 //Menampilkan detail ujian
 $ru = mysqli_fetch_array(mysqli_query($mysqli, "SELECT * FROM ujian WHERE id_ujian='$_GET[ujian]'"));
+$ts = mysqli_fetch_array(mysqli_query($mysqli, "SELECT * FROM soal_type WHERE id='$_GET[type]'"));
 echo '<hr/><div class="alert alert-info"><table width="100% no-ajax">
    <tr>
       <td>Judul Ujian</td><td>:<b> '.$ru['judul'].'</b></td>
-      <td width="15%"></td>
-      <td>Tanggal</td><td>:<b> ' .tgl_indonesia($ru['tanggal']).' </b></td>
-   </tr>
-   <tr>
-      <td>Materi</td><td>:<b> '.$ru['nama_mapel'].'</b></td>
-      <td width="15%"></td>
-      <td>Jml. Soal</td><td>:<b> '.$ru['jml_soal'].'</b></td>
+      <td>Materi</td><td>:<b> ' . $ts['name'] . '</b></td>
    </tr>
 </table>
 <input type="hidden" id="id_ujian" value="'.$_GET['ujian'].'">
+<input type="hidden" id="id_type" value="'.$_GET['type'].'">
 </div>';
 
 //Membuat header dan footer soal

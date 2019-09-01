@@ -18,7 +18,7 @@ function form_add(){
    save_method = "add";
    $('#modal_kelas').modal('show');
    $('#modal_kelas form')[0].reset();
-   $('.modal-title').text('Tambah Kelas');
+   $('.modal-title').text('Tambah Divisi');
 }
 	
 //Ketika tombol edit diklik
@@ -31,7 +31,7 @@ function form_edit(id){
       dataType : "JSON",
       success : function(data){
          $('#modal_kelas').modal('show');
-         $('.modal-title').text('Edit Kelas');
+         $('.modal-title').text('Edit Divisi');
 			
          $('#id').val(data.id_kelas);
          $('#kelas').val(data.kelas);

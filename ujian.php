@@ -28,7 +28,8 @@ $jawaban = implode(",", $arr_jawaban);
 //2 Memasukkan data ke tabel nilai jika data nilai belum ada
 $qnilai = mysqli_query($mysqli, "SELECT * FROM nilai WHERE nis='$_SESSION[nis]' AND id_ujian='$_GET[ujian]'");
 if(mysqli_num_rows($qnilai) < 1){
-   mysqli_query($mysqli, "INSERT INTO nilai SET nis='$_SESSION[nis]', id_ujian='$_GET[ujian]', acak_soal='$acak_soal', jawaban='$jawaban', sisa_waktu='$rujian[waktu]:00'");
+   $query = "INSERT INTO nilai SET nis='$_SESSION[nis]', id_ujian='$_GET[ujian]', acak_soal='$acak_soal', jawaban='$jawaban', sisa_waktu='$rujian[waktu]:00'";
+   mysqli_query($mysqli, $query);
 }
 
 //3 Menampilkan judul mapel dan sisa waktu
@@ -36,7 +37,7 @@ $qnilai = mysqli_query($mysqli, "SELECT * FROM nilai WHERE nis='$_SESSION[nis]' 
 $rnilai = mysqli_fetch_array($qnilai);
 $sisa_waktu = explode(":", $rnilai['sisa_waktu']);
 
-echo '<h3 class="page-header"><b>Mapel: '.$rujian['nama_mapel'].' <span class="pull-right"> Sisa Waktu: <span class="menit">'.$sisa_waktu[0].'</span> : <span class="detik"> '.$sisa_waktu[1].' </span></span></b></h3>
+echo '<h3 class="page-header"><b><span class="pull-right"> Sisa Waktu: <span class="menit">'.$sisa_waktu[0].'</span> : <span class="detik"> '.$sisa_waktu[1].' </span></span></b></h3>
 
 <input type="hidden" id="ujian" value="'.$_GET['ujian'].'">
 <input type="hidden" id="sisa_waktu">';
@@ -74,7 +75,7 @@ for($s=0; $s<count($arr_soal); $s++){
 //7 Menampilkan pilihan	
    $arr_huruf = array("A","B","C","D");	
    $arr_class[$no] = ($arr_jawaban[$s]!=0) ? "green" : "";
-   for($i=0; $i<=4; $i++){
+   for($i=0; $i<=3; $i++){
       $checked = ($arr_jawaban[$s] == $arr_pilihan[$i]['no']) ? "checked" : "";
       $pilihan = str_replace("../media", "media", $arr_pilihan[$i]['pilihan']);
       echo '<div class="row pilihan">

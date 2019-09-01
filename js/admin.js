@@ -11,8 +11,8 @@ $(function(){
 });
 
 //Ketika tombol edit diklik
-function show_soal(ujian){
-   $('#content').load('view/view_soal.php?ujian='+ujian);	
+function show_soal(ujian, type){
+   $('#content').load('view/view_soal.php?ujian='+ujian+'&type='+type);	
 }
 
 //Ketika nama kelas diklik

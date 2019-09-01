@@ -149,7 +149,6 @@ INSERT INTO `soal` (`id_soal`, `id_ujian`, `soal`, `pilihan_1`, `pilihan_2`, `pi
 CREATE TABLE `ujian` (
   `id_ujian` int(11) NOT NULL,
   `judul` varchar(255) NOT NULL,
-  `nama_mapel` varchar(255) NOT NULL,
   `tanggal` date NOT NULL,
   `waktu` int(11) NOT NULL,
   `jml_soal` int(11) NOT NULL

@@ -5,7 +5,7 @@ include "../../library/function_view.php";
 
 //Menampilkan data ke tabel
 if($_GET['action'] == "table_data"){
-   $query = mysqli_query($mysqli, "SELECT * FROM soal WHERE id_ujian='$_GET[ujian]' ORDER BY id_soal");
+   $query = mysqli_query($mysqli, "SELECT * FROM soal WHERE id_ujian='$_GET[ujian]' AND soal_type = '$_GET[type]' ORDER BY id_soal");
    $data = array();
    $no = 1;
    while($r = mysqli_fetch_array($query)){
@@ -43,7 +43,7 @@ elseif($_GET['action'] == "insert"){
    $pil_2 = addslashes($_POST['pil_2']);
    $pil_3 = addslashes($_POST['pil_3']);
    $pil_4 = addslashes($_POST['pil_4']);
-   $querysoal = "INSERT INTO soal SET id_ujian = '$_GET[ujian]', soal = '$soal', pilihan_1 = '$pil_1', pilihan_2 = '$pil_2', pilihan_3 = '$pil_3', pilihan_4 = '$pil_4', kunci = '$_POST[kunci]'";
+   $querysoal = "INSERT INTO soal SET id_ujian = '$_GET[ujian]', soal = '$soal', pilihan_1 = '$pil_1', pilihan_2 = '$pil_2', pilihan_3 = '$pil_3', pilihan_4 = '$pil_4', kunci = '$_POST[kunci]', soal_type = '$_GET[type]'";
    mysqli_query($mysqli, $querysoal);	
    echo "ok";
 }
