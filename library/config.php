@@ -1,4 +1,6 @@
 <?php
+error_reporting(0);
+
 // Membuat variabel, ubah sesuai dengan nama host dan database pada hosting 
 $host	= "localhost";
 $user	= "rukanda";
