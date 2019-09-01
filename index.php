@@ -39,11 +39,5 @@ if( empty($_SESSION['username']) or empty($_SESSION['password']) ){
    </div>
 </section>
 
-<footer> 
-   <div class="container">
-      <p class="text-center">Copyright &copy; Rohi Abdulloh. All right reserved.</p>
-   </div>
-</footer>
-
 </body>
 </html>

@@ -18,8 +18,9 @@ function menu_admin($link, $icon, $title){
 
 if($_SESSION['leveluser'] == "admin"){	
    echo menu_admin("home.php", "home", "Beranda");
-   echo menu_admin("view/view_ujian.php", "edit", "Ujian");
+   echo menu_admin("view/view_ujian.php", "edit", "Deskripsi Ujian");
    echo menu_admin("view/view_siswa.php", "list-alt", "Peserta");
+   echo menu_admin("view/view_ujian_teacher.php", "edit", "Soal & Hasil");
    echo menu_admin("view/view_user.php", "user", "Admin");
    echo menu_admin("view/view_kelas.php", "signal", "Divisi");
    echo menu_admin("view/view_klsujian.php", "sort-by-attributes", "Divisi Ujian");
@@ -27,9 +28,9 @@ if($_SESSION['leveluser'] == "admin"){
 
 elseif($_SESSION['leveluser'] == "operator"){
    echo menu_admin("home.php", "home", "Beranda");
-   echo menu_admin("view/view_ujian.php", "edit", "Ujian");
+   echo menu_admin("view/view_ujian.php", "edit", "Deskripsi Ujian");
    echo menu_admin("view/view_siswa.php", "list-alt", "Peserta");
-   echo menu_admin("view/view_ujian_teacher.php", "edit", "Soal");
+   echo menu_admin("view/view_ujian_teacher.php", "edit", "Soal & Hasil");
    echo menu_admin("view/view_klsujian.php", "sort-by-attributes", "Divisi Ujian");
    echo menu_admin("view/view_ujian_operator.php", "edit", "Aktifasi Ujian");
    echo menu_admin("view/view_siswa_operator.php", "list-alt", "Status Peserta");

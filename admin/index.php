@@ -46,12 +46,6 @@ if(empty($_SESSION['username']) or empty($_SESSION['password']) or $_SESSION['lo
       </div>
    </div>
 </section>
-
-<footer> 
-   <div class="container">
-      <p class="text-center">Copyright &copy; Rohi Abdulloh. All right reserved.</p>
-   </div>
-</footer>
 	
 <script type="text/javascript" src="../assets/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../assets/dataTables/js/jquery.dataTables.min.js"></script>
