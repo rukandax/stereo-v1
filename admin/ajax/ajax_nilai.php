@@ -26,7 +26,7 @@ if($_GET['action'] == "table_data"){
       foreach(json_decode($n['nilai'], true) as $nkey => $nvalue) {
          $type = mysqli_fetch_array(mysqli_query($mysqli, "SELECT * FROM soal_type WHERE id = '$nkey'"));
          $nilai .= '<tr><td style="padding: 5px;">' . $type['name'] . ' (' . $nvalue .')</td></tr>';
-         $status .= '<tr><td style="padding: 5px;">' . $type['name'] . ' - ' . (($nvalue > $type['threshold']) ? '<span class="label label-success">Lulus</span>' : '<span class="label label-danger">Gagal</span>') .'</td></tr>';
+         $status .= '<tr><td style="padding: 5px;">' . $type['name'] . ' - ' . (($nvalue >= $type['threshold']) ? '<span class="label label-success">Lulus</span>' : '<span class="label label-danger">Gagal</span>') .'</td></tr>';
       }
       $nilai .= '</table>';
       $status .= '</table>';
