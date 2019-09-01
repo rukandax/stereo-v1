@@ -1,5 +1,5 @@
 <?php
-error_reporting(false);
+error_reporting(0);
 session_start();
 ob_start();
 
