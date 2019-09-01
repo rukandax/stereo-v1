@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 01, 2019 at 10:25 AM
+-- Generation Time: Sep 01, 2019 at 02:06 PM
 -- Server version: 5.7.27-0ubuntu0.18.04.1
 -- PHP Version: 7.2.21-1+ubuntu18.04.1+deb.sury.org+1
 
@@ -57,7 +57,7 @@ CREATE TABLE `kelas_ujian` (
 --
 
 INSERT INTO `kelas_ujian` (`id_ujian`, `id_kelas`, `aktif`) VALUES
-(1, 1, 'N');
+(1, 1, 'Y');
 
 -- --------------------------------------------------------
 
@@ -72,8 +72,8 @@ CREATE TABLE `nilai` (
   `acak_soal` text NOT NULL,
   `jawaban` text NOT NULL,
   `sisa_waktu` varchar(255) NOT NULL,
-  `jml_benar` int(11) NOT NULL,
-  `nilai` varchar(255) NOT NULL
+  `jml_benar` int(11) NOT NULL DEFAULT '0',
+  `nilai` varchar(255) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -81,17 +81,8 @@ CREATE TABLE `nilai` (
 --
 
 INSERT INTO `nilai` (`id_nilai`, `nis`, `id_ujian`, `acak_soal`, `jawaban`, `sisa_waktu`, `jml_benar`, `nilai`) VALUES
-(1, '1415100898', 86, '55,59,52,65,67,64,70,68,51,62,61,57,53,63,56,58,54,69,60,66', '3,2,4,4,3,3,5,4,1,1,3,5,3,0,0,3,0,0,0,2', '00:02', 3, '15'),
-(2, '1415100896', 86, '52,57,62,59,60,66,70,53,68,64,61,65,55,54,69,56,58,67,51,63', '2,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,3,2,1', '119:30', 1, '5'),
-(3, '1415100897', 86, '68,66,64,51,61,58,57,60,62,65,55,59,54,52,70,67,53,56,63,69', '2,1,2,0,0,2,4,3,5,0,2,4,5,5,0,2,2,3,0,4', '119:10', 2, '10'),
-(4, '1516101253', 86, '66,57,60,70,52,53,55,69,56,64,61,51,59,62,58,63,65,67,54,68', '2,1,5,2,3,4,1,3,4,4,3,2,5,2,5,3,4,4,3,2', '116:53', 8, '40'),
-(5, '1415100903', 86, '54,51,59,61,58,57,69,67,60,66,55,68,56,53,52,65,62,64,63,70', '5,2,3,2,5,1,3,1,5,2,1,1,4,4,3,4,0,0,0,0', '113:43', 0, ''),
-(6, '1415100900', 86, '67,52,66,59,65,63,53,51,70,54,64,62,69,60,55,58,56,57,61,68', '1,3,4,2,4,4,4,2,5,1,5,4,4,2,3,5,4,1,5,1', '114:56', 11, '55'),
-(7, '1415100899', 86, '67,54,66,69,60,64,51,62,56,52,59,58,53,61,65,68,57,55,63,70', '1,2,2,3,5,2,2,1,4,2,2,5,4,1,4,1,1,3,3,2', '114:34', 14, '70'),
-(8, '1415100901', 86, '63,70,66,62,52,57,69,59,55,54,61,53,58,67,65,64,51,68,56,60', '5,2,2,1,3,1,3,5,1,2,3,4,5,4,4,2,2,2,2,3', '115:45', 7, '35'),
-(9, '2345678', 88, '73,71,72', '4,2,5', '117:58', 1, '33.33'),
-(10, '1234123', 88, '72,73,71', '1,4,0', '00:09', 0, '0'),
-(11, '1516101255', 88, '71,73,72', '1,5,0', '00:52', 0, '');
+(1, '123456', 1, '1,3,7,6,4,5,2,8', '1,3,2,3,4,1,2,4', '59:33', 8, '100'),
+(2, '234567', 1, '8,4,7,1,2,3,5,6', '4,4,2,1,4,2,4,1', '59:17', 4, '50');
 
 -- --------------------------------------------------------
 
@@ -113,7 +104,7 @@ CREATE TABLE `siswa` (
 
 INSERT INTO `siswa` (`nis`, `nama`, `password`, `id_kelas`, `status`) VALUES
 ('123456', 'Reynanda Raihan', '7dcba52d58b83cdf6146f67c7b199083', 1, 'off'),
-('234567', 'Dinara Ramadhani', '34fc6ae770cde1775969ad4136b91f7a', 1, 'off');
+('234567', 'Dinara Ramadhani', '34fc6ae770cde1775969ad4136b91f7a', 1, 'login');
 
 -- --------------------------------------------------------
 
@@ -129,16 +120,45 @@ CREATE TABLE `soal` (
   `pilihan_2` text NOT NULL,
   `pilihan_3` text NOT NULL,
   `pilihan_4` text NOT NULL,
-  `kunci` int(11) NOT NULL
+  `kunci` int(11) NOT NULL,
+  `soal_type` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `soal`
 --
 
-INSERT INTO `soal` (`id_soal`, `id_ujian`, `soal`, `pilihan_1`, `pilihan_2`, `pilihan_3`, `pilihan_4`, `kunci`) VALUES
-(1, 1, '<p>Manakah pernyataan di bawah ini yang tidak termasuk karakteristik kredit consumer ?</p>', '<p>Diberikan kepada perorangan dan pemberian kreditnya dapat dilakukan secara massal</p>', '<p>Target market kredit consumer merupakan leader di industri dengan performance yang kuat</p>', '<p>Dibuat dalam bentuk kredit program yang disesuaikan dengan target market yang akan dituju</p>', '<p>Proses kredit yang ter-standarisasi secara end to end</p>', 2),
-(2, 1, '<p>Aktivitas berikut ini yang merupakan bagian dari siklus aktivitas pengelolaan kredit consumer adalah</p>', '<p>Penagihan / Collection</p>', '<p>Pengelolaan dan Monitoring Kredit</p>', '<p>a dan b benar</p>', '<p>a dan b salah</p>', 3);
+INSERT INTO `soal` (`id_soal`, `id_ujian`, `soal`, `pilihan_1`, `pilihan_2`, `pilihan_3`, `pilihan_4`, `kunci`, `soal_type`) VALUES
+(1, 1, '<p>Ini soal pertama General</p>', '<p>Pilihan pertama yang benar</p>', '<p>Pilihan kedua</p>', '<p>Pilihan ketiga</p>', '<p>Pilihan keempat</p>', 1, 1),
+(2, 1, '<p>Ini soal kedua General</p>', '<p>Pilihan pertama</p>', '<p>Pilihan kedua yang benar</p>', '<p>Pilihan ketiga</p>', '<p>Pilihan keempat</p>', 2, 1),
+(3, 1, '<p>Ini soal pertama Product Knowledge</p>', '<p>Pilihan pertama</p>', '<p>Pilihan kedua</p>', '<p>Pilihan ketiga yang benar</p>', '<p>Pilihan keempat</p>', 3, 2),
+(4, 1, '<p>Ini soal kedua Product Knowledge</p>', '<p>Pilihan pertama</p>', '<p>Pilihan kedua</p>', '<p>Pilihan ketiga</p>', '<p>Pilihan keempat yang benar</p>', 4, 2),
+(5, 1, '<p>Ini contoh soal pertama Credit Process &amp; Analyst</p>', '<p>Pilihan pertama yang benar</p>', '<p>Pilihan kedua</p>', '<p>Pilihan ketiga</p>', '<p>Pilihan keempat</p>', 1, 3),
+(6, 1, '<p>Ini contoh soal kedua Credit Process &amp; Analyst</p>', '<p>Pilihan pertama</p>', '<p>Pilihan kedua</p>', '<p>Pilihan ketiga yang benar</p>', '<p>Pilihan keempat</p>', 3, 3),
+(7, 1, '<p>Ini contoh soal Internal Policy</p>', '<p>Pilihan pertama</p>', '<p>Pilihan kedua yang benar</p>', '<p>Pilihan ketiga</p>', '<p>Pilihan keempat</p>', 2, 4),
+(8, 1, '<p>Ini contoh soal kedua Internal Policy</p>', '<p>Pilihan pertama</p>', '<p>Pilihan kedua</p>', '<p>Pilihan ketiga</p>', '<p>Pilihan keempat yang benar</p>', 4, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `soal_type`
+--
+
+CREATE TABLE `soal_type` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `threshold` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `soal_type`
+--
+
+INSERT INTO `soal_type` (`id`, `name`, `threshold`) VALUES
+(1, 'General', NULL),
+(2, 'Product Knowledge', NULL),
+(3, 'Credit Process & Analyst', NULL),
+(4, 'Internal Policy', NULL);
 
 -- --------------------------------------------------------
 
@@ -158,8 +178,8 @@ CREATE TABLE `ujian` (
 -- Dumping data for table `ujian`
 --
 
-INSERT INTO `ujian` (`id_ujian`, `judul`, `nama_mapel`, `tanggal`, `waktu`, `jml_soal`) VALUES
-(1, 'Assesment CMLD - 29 Aug 2019', 'General', '2019-08-29', 60, 10);
+INSERT INTO `ujian` (`id_ujian`, `judul`, `tanggal`, `waktu`, `jml_soal`) VALUES
+(1, 'Assesment CMLD - 29 Aug 2019', '2019-09-01', 60, 8);
 
 -- --------------------------------------------------------
 
@@ -212,6 +232,12 @@ ALTER TABLE `soal`
   ADD PRIMARY KEY (`id_soal`);
 
 --
+-- Indexes for table `soal_type`
+--
+ALTER TABLE `soal_type`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `ujian`
 --
 ALTER TABLE `ujian`
@@ -238,13 +264,19 @@ ALTER TABLE `kelas`
 -- AUTO_INCREMENT for table `nilai`
 --
 ALTER TABLE `nilai`
-  MODIFY `id_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `soal`
 --
 ALTER TABLE `soal`
-  MODIFY `id_soal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_soal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `soal_type`
+--
+ALTER TABLE `soal_type`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `ujian`
