@@ -17,7 +17,7 @@ if($_GET['action'] == "table_data"){
       $jbenar = '<table>';
       foreach(json_decode($n['jml_benar'], true) as $jkey => $jvalue) {
          $type = mysqli_fetch_array(mysqli_query($mysqli, "SELECT * FROM soal_type WHERE id = '$jkey'"));
-         $jbenar .= '<tr><td>' . $type['name'] . ' (' . $jvalue .')</td></tr>';
+         $jbenar .= '<tr><td style="padding: 5px;">' . $type['name'] . ' (' . $jvalue .')</td></tr>';
       }
       $jbenar .= '</table>';
 
@@ -25,8 +25,8 @@ if($_GET['action'] == "table_data"){
       $status = '<table>';
       foreach(json_decode($n['nilai'], true) as $nkey => $nvalue) {
          $type = mysqli_fetch_array(mysqli_query($mysqli, "SELECT * FROM soal_type WHERE id = '$nkey'"));
-         $nilai .= '<tr><td>' . $type['name'] . ' (' . $nvalue .')</td></tr>';
-         $status .= '<tr><td>' . $type['name'] . ' (' . $nvalue > $type['threshold'] ? 'Lulus' : 'Tidak Lulus' .')</td></tr>';
+         $nilai .= '<tr><td style="padding: 5px;">' . $type['name'] . ' (' . $nvalue .')</td></tr>';
+         $status .= '<tr><td style="padding: 5px;">' . $type['name'] . ' - ' . (($nvalue > $type['threshold']) ? '<span class="label label-success">Lulus</span>' : '<span class="label label-danger">Gagal</span>') .'</td></tr>';
       }
       $nilai .= '</table>';
       $status .= '</table>';
