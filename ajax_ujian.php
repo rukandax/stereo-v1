@@ -23,18 +23,38 @@ if($_GET['action']=="kirim_jawaban"){
 //Memproses data ajax ketika menyelesaikan ujian
 elseif($_GET['action']=="selesai_ujian"){
    $rnilai = mysqli_fetch_array(mysqli_query($mysqli, "SELECT * FROM nilai WHERE id_ujian='$_POST[ujian]' AND nis='$_SESSION[nis]'"));
-	
+   $jbenar = [];
+   $countsoal = [];
+   $nilai = [];
+
+   $query = mysqli_query($mysqli, "SELECT * FROM soal_type");
+
+   while($soaltype = mysqli_fetch_array($query)) {
+      $jbenar[$soaltype['id']] = 0;
+      $countsoal[$soaltype['id']] = 0;
+   }
+
    $arr_soal = explode(",", $rnilai['acak_soal']);
    $jawaban = explode(",", $rnilai['jawaban']);
-   $jbenar = 0;
    for($i=0; $i<count($arr_soal); $i++){
       $rsoal = mysqli_fetch_array(mysqli_query($mysqli, "SELECT * FROM soal WHERE id_ujian='$_POST[ujian]' AND id_soal='$arr_soal[$i]'"));
-      if($rsoal['kunci'] == $jawaban[$i]) $jbenar++;
+
+      if($rsoal['kunci'] == $jawaban[$i]) {
+         $jbenar[$rsoal['soal_type']]++;
+      }
+
+      $countsoal[$rsoal['soal_type']]++;
    }
-	
-   $nilai = $jbenar/count($arr_soal)*100;
-	
-   mysqli_query($mysqli, "UPDATE nilai SET jml_benar='$jbenar', nilai='$nilai' WHERE id_ujian='$_POST[ujian]' AND nis='$_SESSION[nis]'");
+
+   foreach ($jbenar as $jkey => $jvalue) {
+      $nilai[$jkey] = $jvalue/$countsoal[$jkey]*100;
+   }
+
+   $jbenarencode = json_encode($jbenar);
+   $nilaiencode = json_encode($nilai);
+
+   $query = "UPDATE nilai SET jml_benar='$jbenarencode', nilai='$nilaiencode' WHERE id_ujian='$_POST[ujian]' AND nis='$_SESSION[nis]'";
+   mysqli_query($mysqli, $query);
    
    mysqli_query($mysqli, "UPDATE siswa SET status='login' WHERE nis='$_SESSION[nis]'");
    

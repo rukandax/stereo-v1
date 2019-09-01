@@ -15,5 +15,5 @@ create_button("primary", "export", "Export", "btn-add", "export_nilai()");
 echo '<input type="hidden" id="id_ujian" value="'.$_GET['ujian'].'">
 <input type="hidden" id="id_kelas" value="'.$_GET['kelas'].'">';
 	  
-create_table(array("NIP", "Nama Peserta", "Jml. Benar", "Nilai"));
+create_table(array("NIP", "Nama Peserta", "Jml. Benar", "Nilai", "Status"));
 ?>
