@@ -71,8 +71,8 @@ CREATE TABLE IF NOT EXISTS `nilai` (
   `acak_soal` text NOT NULL,
   `jawaban` text NOT NULL,
   `sisa_waktu` varchar(255) NOT NULL,
-  `jml_benar` int(11) NOT NULL DEFAULT '0',
-  `nilai` varchar(255) NOT NULL DEFAULT '0',
+  `jml_benar` text,
+  `nilai` text,
   PRIMARY KEY (`id_nilai`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
@@ -81,8 +81,7 @@ CREATE TABLE IF NOT EXISTS `nilai` (
 --
 
 INSERT INTO `nilai` (`id_nilai`, `nis`, `id_ujian`, `acak_soal`, `jawaban`, `sisa_waktu`, `jml_benar`, `nilai`) VALUES
-(1, '123456', 1, '1,3,7,6,4,5,2,8', '1,3,2,3,4,1,2,4', '59:33', 8, '100'),
-(2, '234567', 1, '8,4,7,1,2,3,5,6', '4,4,2,1,4,2,4,1', '59:17', 4, '50');
+(1, '123456', 1, '3,6,5,2,8,4,1,7', '3,3,1,2,4,4,1,2', '58:27', '{\"1\":2,\"2\":2,\"3\":2,\"4\":2}', '{\"1\":100,\"2\":100,\"3\":100,\"4\":100}');
 
 -- --------------------------------------------------------
 
@@ -104,8 +103,6 @@ CREATE TABLE IF NOT EXISTS `siswa` (
 --
 
 INSERT INTO `siswa` (`nis`, `nama`, `password`, `id_kelas`, `status`) VALUES
-('123456', 'Reynanda Raihan', '7dcba52d58b83cdf6146f67c7b199083', 1, 'off'),
-('234567', 'Dinara Ramadhani', '34fc6ae770cde1775969ad4136b91f7a', 1, 'login'),
 ('11111', 'user01', '18cb20abdab7b3ce73036ad0f44a7d85', 1, 'off'),
 ('22222', 'user02', '182acaa46619f5c80bc9d89642fed0d6', 1, 'off'),
 ('33333', 'user03', '8b31be16080e77771bfb26bc808d6e2f', 1, 'off'),
@@ -171,10 +168,10 @@ CREATE TABLE IF NOT EXISTS `soal_type` (
 --
 
 INSERT INTO `soal_type` (`id`, `name`, `threshold`) VALUES
-(1, 'General', NULL),
-(2, 'Product Knowledge', NULL),
-(3, 'Credit Process & Analyst', NULL),
-(4, 'Internal Policy', NULL);
+(1, 'General', 70),
+(2, 'Product Knowledge', 70),
+(3, 'Credit Process & Analyst', 70),
+(4, 'Policy & Regulation', 70);
 
 -- --------------------------------------------------------
 
@@ -220,7 +217,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`id_user`, `nama`, `username`, `password`, `level`) VALUES
 (1, 'Administrator', 'admin', '524238e47f920ead930b892fbabfa8f0', 'admin'),
-(2, 'Rukanda Faridsi', 'rukanda', 'ef88886f6700675eaa11a16174cc00eb', 'operator');
+(2, 'Rukanda Faridsi', 'rukanda', 'ef88886f6700675eaa11a16174cc00eb', 'operator'),
+(4, 'Ardy Winata', 'ardy', '1d6938247df828016cda2465c1c9de17', 'operator');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
