@@ -1,22 +1,20 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
--- https://www.phpmyadmin.net/
+-- version 4.1.12
+-- http://www.phpmyadmin.net
 --
--- Host: localhost:3306
--- Generation Time: Sep 01, 2019 at 08:11 PM
--- Server version: 5.7.27-0ubuntu0.18.04.1
--- PHP Version: 7.2.21-1+ubuntu18.04.1+deb.sury.org+1
+-- Host: 127.0.0.1
+-- Generation Time: Sep 02, 2019 at 02:47 PM
+-- Server version: 5.6.16
+-- PHP Version: 5.5.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `stereo-v1`
@@ -28,18 +26,18 @@ SET time_zone = "+00:00";
 -- Table structure for table `kelas`
 --
 
-CREATE TABLE `kelas` (
-  `id_kelas` int(5) NOT NULL,
-  `kelas` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+CREATE TABLE IF NOT EXISTS `kelas` (
+  `id_kelas` int(5) NOT NULL AUTO_INCREMENT,
+  `kelas` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_kelas`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `kelas`
 --
 
 INSERT INTO `kelas` (`id_kelas`, `kelas`) VALUES
-(1, 'Commercial Lending Division'),
-(2, 'Sales School');
+(1, 'Commercial Lending Division (CMLD)');
 
 -- --------------------------------------------------------
 
@@ -47,7 +45,7 @@ INSERT INTO `kelas` (`id_kelas`, `kelas`) VALUES
 -- Table structure for table `kelas_ujian`
 --
 
-CREATE TABLE `kelas_ujian` (
+CREATE TABLE IF NOT EXISTS `kelas_ujian` (
   `id_ujian` int(11) NOT NULL,
   `id_kelas` int(11) NOT NULL,
   `aktif` enum('Y','N') NOT NULL DEFAULT 'N'
@@ -66,23 +64,25 @@ INSERT INTO `kelas_ujian` (`id_ujian`, `id_kelas`, `aktif`) VALUES
 -- Table structure for table `nilai`
 --
 
-CREATE TABLE `nilai` (
-  `id_nilai` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `nilai` (
+  `id_nilai` int(11) NOT NULL AUTO_INCREMENT,
   `nis` varchar(255) NOT NULL,
   `id_ujian` int(11) NOT NULL,
   `acak_soal` text NOT NULL,
   `jawaban` text NOT NULL,
   `sisa_waktu` varchar(255) NOT NULL,
-  `jml_benar` text,
-  `nilai` text
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `jml_benar` int(11) NOT NULL DEFAULT '0',
+  `nilai` varchar(255) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_nilai`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `nilai`
 --
 
 INSERT INTO `nilai` (`id_nilai`, `nis`, `id_ujian`, `acak_soal`, `jawaban`, `sisa_waktu`, `jml_benar`, `nilai`) VALUES
-(1, '123456', 1, '3,6,5,2,8,4,1,7', '3,3,1,2,4,4,1,2', '58:27', '{\"1\":2,\"2\":2,\"3\":2,\"4\":2}', '{\"1\":100,\"2\":100,\"3\":100,\"4\":100}');
+(1, '123456', 1, '1,3,7,6,4,5,2,8', '1,3,2,3,4,1,2,4', '59:33', 8, '100'),
+(2, '234567', 1, '8,4,7,1,2,3,5,6', '4,4,2,1,4,2,4,1', '59:17', 4, '50');
 
 -- --------------------------------------------------------
 
@@ -90,12 +90,13 @@ INSERT INTO `nilai` (`id_nilai`, `nis`, `id_ujian`, `acak_soal`, `jawaban`, `sis
 -- Table structure for table `siswa`
 --
 
-CREATE TABLE `siswa` (
+CREATE TABLE IF NOT EXISTS `siswa` (
   `nis` varchar(20) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `password` varchar(32) NOT NULL,
   `id_kelas` int(11) NOT NULL,
-  `status` varchar(255) NOT NULL
+  `status` varchar(255) NOT NULL,
+  PRIMARY KEY (`nis`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -103,11 +104,17 @@ CREATE TABLE `siswa` (
 --
 
 INSERT INTO `siswa` (`nis`, `nama`, `password`, `id_kelas`, `status`) VALUES
-('123456', 'Reynanda Raihan', '7dcba52d58b83cdf6146f67c7b199083', 1, 'login'),
-('234567', 'Dinara Ramadhani', '34fc6ae770cde1775969ad4136b91f7a', 1, 'off'),
-('345678', 'Ardy Winata', '9ef62360da16b7da0bd5459d82944535', 1, 'off'),
-('456789', 'Wildan Ade Wijaya', '74ad83eedb20da8803e91df71dfd2845', 1, 'login'),
-('135791', 'Isnain ', '63119c1ef1769be3367f0fb6c39b2573', 1, 'off');
+('123456', 'Reynanda Raihan', '7dcba52d58b83cdf6146f67c7b199083', 1, 'off'),
+('234567', 'Dinara Ramadhani', '34fc6ae770cde1775969ad4136b91f7a', 1, 'login'),
+('11111', 'user01', '18cb20abdab7b3ce73036ad0f44a7d85', 1, 'off'),
+('22222', 'user02', '182acaa46619f5c80bc9d89642fed0d6', 1, 'off'),
+('33333', 'user03', '8b31be16080e77771bfb26bc808d6e2f', 1, 'off'),
+('44444', 'user04', 'd97397b39da40ee1417fc1d14d954e29', 1, 'off'),
+('55555', 'user05', 'ae821a7fd5f873bf0292341f85938637', 1, 'off'),
+('66666', 'user06', '129938a83a235dd18a2eed360c30c111', 1, 'off'),
+('77777', 'user07', '8fbe727007e90abacb606d07b824a41c', 1, 'off'),
+('88888', 'user08', '221ab48c875accc41f436a0ca0e4de83', 1, 'off'),
+('99999', 'user09', '9b7decd2a85c27912b6f3b3f7e9d758e', 1, 'off');
 
 -- --------------------------------------------------------
 
@@ -115,8 +122,8 @@ INSERT INTO `siswa` (`nis`, `nama`, `password`, `id_kelas`, `status`) VALUES
 -- Table structure for table `soal`
 --
 
-CREATE TABLE `soal` (
-  `id_soal` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `soal` (
+  `id_soal` int(11) NOT NULL AUTO_INCREMENT,
   `id_ujian` int(11) NOT NULL,
   `soal` text NOT NULL,
   `pilihan_1` text NOT NULL,
@@ -124,22 +131,27 @@ CREATE TABLE `soal` (
   `pilihan_3` text NOT NULL,
   `pilihan_4` text NOT NULL,
   `kunci` int(11) NOT NULL,
-  `soal_type` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `soal_type` int(11) NOT NULL,
+  PRIMARY KEY (`id_soal`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
 
 --
 -- Dumping data for table `soal`
 --
 
 INSERT INTO `soal` (`id_soal`, `id_ujian`, `soal`, `pilihan_1`, `pilihan_2`, `pilihan_3`, `pilihan_4`, `kunci`, `soal_type`) VALUES
-(1, 1, '<p>Ini soal pertama General</p>', '<p>Pilihan pertama yang benar</p>', '<p>Pilihan kedua</p>', '<p>Pilihan ketiga</p>', '<p>Pilihan keempat</p>', 1, 1),
-(2, 1, '<p>Ini soal kedua General</p>', '<p>Pilihan pertama</p>', '<p>Pilihan kedua yang benar</p>', '<p>Pilihan ketiga</p>', '<p>Pilihan keempat</p>', 2, 1),
-(3, 1, '<p>Ini soal pertama Product Knowledge</p>', '<p>Pilihan pertama</p>', '<p>Pilihan kedua</p>', '<p>Pilihan ketiga yang benar</p>', '<p>Pilihan keempat</p>', 3, 2),
-(4, 1, '<p>Ini soal kedua Product Knowledge</p>', '<p>Pilihan pertama</p>', '<p>Pilihan kedua</p>', '<p>Pilihan ketiga</p>', '<p>Pilihan keempat yang benar</p>', 4, 2),
-(5, 1, '<p>Ini contoh soal pertama Credit Process &amp; Analyst</p>', '<p>Pilihan pertama yang benar</p>', '<p>Pilihan kedua</p>', '<p>Pilihan ketiga</p>', '<p>Pilihan keempat</p>', 1, 3),
-(6, 1, '<p>Ini contoh soal kedua Credit Process &amp; Analyst</p>', '<p>Pilihan pertama</p>', '<p>Pilihan kedua</p>', '<p>Pilihan ketiga yang benar</p>', '<p>Pilihan keempat</p>', 3, 3),
-(7, 1, '<p>Ini contoh soal Internal Policy</p>', '<p>Pilihan pertama</p>', '<p>Pilihan kedua yang benar</p>', '<p>Pilihan ketiga</p>', '<p>Pilihan keempat</p>', 2, 4),
-(8, 1, '<p>Ini contoh soal kedua Internal Policy</p>', '<p>Pilihan pertama</p>', '<p>Pilihan kedua</p>', '<p>Pilihan ketiga</p>', '<p>Pilihan keempat yang benar</p>', 4, 4);
+(9, 1, '<p>Manakah pernyataan di bawah ini yang tidak termasuk karakteristik kredit consumer ?</p>', '<p>Diberikan kepada perorangan dan pemberian kreditnya dapat dilakukan secara massal</p>', '<p>Target market kredit consumer merupakan <em>leader</em> di industri dengan <em>performance</em> yang kuat</p>', '<p>Dibuat dalam bentuk kredit program yang disesuaikan dengan target market yang akan dituju</p>', '<p>Proses kredit yang ter-standarisasi secara end to end</p>', 2, 1),
+(12, 1, '<p>Fungsi, tugas dan tanggung jawab Credit Risk Management Unit - Retail Risk Unit adalah, kecuali ?</p>', '<p>Mengelola risiko kredit termasuk melakukan <em>risk assessment</em>, dan menetapkan mitigasi risiko dalam penyusunan ketentuan produk kredit, termasuk kredit program &amp; kredit turunannya</p>', '<p>Mereview kecukupan Cadangan Kerugian Penurunan Nilai (CKPN) kredit yang dilakukan oleh Business Unit telah sesuai ketentuan yang berlaku</p>', '<p>Mengelola debitur berkolektibilitas 1 dan 2A</p>', '<p>Melakukan pengelolaan dan upaya penyelesaian kewajiban debitur atas kredit-kredit yang telah dihapus buku</p>', 3, 2),
+(16, 1, '<p>Secara umum produk inti kredit consumer dibedakan menjadi ?</p>', '<p>Kredit Berbasis Agunan</p>', '<p>Kredit Tanpa Agunan</p>', '<p>a dan b benar</p>', '<p>a dan b salah</p>', 3, 3),
+(15, 1, '<p>Berikut ini yang merupakan unit kerja terkait kredit segmen consumer adalah ?</p>', '<p>Legal Unit</p>', '<p>Compliance Unit</p>', '<p>Central Operations Unit</p>', '<p>Benar semua</p>', 4, 3),
+(19, 1, '<p>Manakah di bawah ini yang merupakan definisi dari Afinity ?</p>', '<p>Kerjasama dengan suatu badan usaha tertentu dimana kartu yang diterbitkan ditujukan kepada konsumen/pelanggan dari badan usaha tersebut</p>', '<p>Kerjasama dengan suatu komunitas atau perkumpulan masyarakat tertentu, dimana kartu yang akan diterbitkan ditujukan kepada anggota dari komunitas/perkumpulan tersebut</p>', '<p>Kerjasama dengan suatu komunitas atau perkumpulan masyarakat tertentu, dimana kartu yang akan diterbitkan ditujukan kepada pengurus dari komunitas/perkumpulan tersebut</p>', '<p>Kerjasama antara Bank dengan perusahaan dalam rangka menyalurkan kredit consumer kapada pegawai perusahaan</p>', 2, 4),
+(18, 1, '<p>Kredit yang diberikan kepada perorangan untuk membiayai pembelian kavling siap bangun, merupakan definisi ?</p>', '<p>Kredit Pemilikan Rumah</p>', '<p>Kredit Pemilikan Tanah</p>', '<p>Kredit Refinancing</p>', '<p>Salah semua</p>', 2, 4),
+(10, 1, '<p>Aktivitas berikut ini yang merupakan bagian dari siklus aktivitas pengelolaan kredit consumer adalah ?</p>', '<p>Penagihan / Collection</p>', '<p>Pengelolaan dan Monitoring Kredit</p>', '<p>a dan b benar</p>', '<p>a dan b salah</p>', 3, 1),
+(11, 1, '<p>Debitur yang dikelola oleh Business Unit Consumer Loans dan Consumer Cards adalah debitur dengan ?</p>', '<p>Kolektibilitas 1</p>', '<p>Kolektibilitas DPD 30+ (2B,2C)</p>', '<p>a dan b benar</p>', '<p>a dan b salah</p>', 1, 1),
+(13, 1, '<p>Berikut ini yang bukan merupakan unit pengelola kredit segmen consumer adalah ?</p>', '<p>Consumer Cards Unit</p>', '<p>Consumer Loans Unit</p>', '<p>Credit Operations Unit</p>', '<p>Retail Risk Unit</p>', 3, 2),
+(14, 1, '<p>Berikut ini merupakan fungsi, tugas dan tanggung jawab unit kerja Consumer Loans, kecuali ?</p>', '<p>Menetapkan <em>target market</em> dan mencari <em>targeted customer</em> yang layak/<em>feasible</em> untuk dibiayai serta memasarkan produk-produk perkreditan termasuk melakukan <em>cross selling</em></p>', '<p>Memperoleh kelengkapan data/dokumen dan melakukan verifikasi dan validasi data/dokumen tersebut</p>', '<p>Mengusulkan perubahan scoring bersama Unit Pembina Sistem Credit Risk Tools &amp; Portfolio kepada Direktur Risk Management dan Direktur/EVP Coordinator Consumer Finance</p>', '<p>Melakukan pemutusan kredit sebagai pemegang kewenangan memutus kredit atau sebagai anggota Komite Kredit sesuai limit kewenangannya</p>', 3, 2),
+(17, 1, '<p>Kredit yang diberikan kepada perorangan dengan cara mengagunkan rumah tinggal/ rumah susun / apartement / rumah kantor / rumah toko / kendaraan atas nama yang bersangkutan atau suami/isteri yang bersangkutan, merupakan definisi dari ?</p>', '<p>Kredit Pemilikan Rumah</p>', '<p>Kredit Pemilikan Tanah</p>', '<p>Kredit Refinancing</p>', '<p>Kredit Bebas Agunan</p>', 3, 3),
+(20, 1, '<p>Manakah pola kerjasama di bawah ini yang bukan merupakan pola kerjasama Consumer Loans / Credit Card ?</p>', '<p>Afinity</p>', '<p>Mitrakarya</p>', '<p>Sindikasi</p>', '<p>Sekuritisasi Aset</p>', 3, 4);
 
 -- --------------------------------------------------------
 
@@ -147,21 +159,22 @@ INSERT INTO `soal` (`id_soal`, `id_ujian`, `soal`, `pilihan_1`, `pilihan_2`, `pi
 -- Table structure for table `soal_type`
 --
 
-CREATE TABLE `soal_type` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `soal_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `threshold` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `threshold` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `soal_type`
 --
 
 INSERT INTO `soal_type` (`id`, `name`, `threshold`) VALUES
-(1, 'General', 70),
-(2, 'Product Knowledge', 70),
-(3, 'Credit Process & Analyst', 70),
-(4, 'Policy & Regulation', 70);
+(1, 'General', NULL),
+(2, 'Product Knowledge', NULL),
+(3, 'Credit Process & Analyst', NULL),
+(4, 'Internal Policy', NULL);
 
 -- --------------------------------------------------------
 
@@ -169,13 +182,14 @@ INSERT INTO `soal_type` (`id`, `name`, `threshold`) VALUES
 -- Table structure for table `ujian`
 --
 
-CREATE TABLE `ujian` (
-  `id_ujian` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `ujian` (
+  `id_ujian` int(11) NOT NULL AUTO_INCREMENT,
   `judul` varchar(255) NOT NULL,
   `tanggal` date NOT NULL,
   `waktu` int(11) NOT NULL,
-  `jml_soal` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `jml_soal` int(11) NOT NULL,
+  PRIMARY KEY (`id_ujian`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `ujian`
@@ -190,13 +204,15 @@ INSERT INTO `ujian` (`id_ujian`, `judul`, `tanggal`, `waktu`, `jml_soal`) VALUES
 -- Table structure for table `user`
 --
 
-CREATE TABLE `user` (
-  `id_user` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `user` (
+  `id_user` int(11) NOT NULL AUTO_INCREMENT,
   `nama` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(32) NOT NULL,
-  `level` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `level` text NOT NULL,
+  PRIMARY KEY (`id_user`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `user`
@@ -204,96 +220,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id_user`, `nama`, `username`, `password`, `level`) VALUES
 (1, 'Administrator', 'admin', '524238e47f920ead930b892fbabfa8f0', 'admin'),
-(2, 'Rukanda Faridsi', 'rukanda', 'ef88886f6700675eaa11a16174cc00eb', 'operator'),
-(4, 'Ardy Winata', 'ardy', '1d6938247df828016cda2465c1c9de17', 'operator');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `kelas`
---
-ALTER TABLE `kelas`
-  ADD PRIMARY KEY (`id_kelas`);
-
---
--- Indexes for table `nilai`
---
-ALTER TABLE `nilai`
-  ADD PRIMARY KEY (`id_nilai`);
-
---
--- Indexes for table `siswa`
---
-ALTER TABLE `siswa`
-  ADD PRIMARY KEY (`nis`);
-
---
--- Indexes for table `soal`
---
-ALTER TABLE `soal`
-  ADD PRIMARY KEY (`id_soal`);
-
---
--- Indexes for table `soal_type`
---
-ALTER TABLE `soal_type`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `ujian`
---
-ALTER TABLE `ujian`
-  ADD PRIMARY KEY (`id_ujian`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id_user`),
-  ADD UNIQUE KEY `username` (`username`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `kelas`
---
-ALTER TABLE `kelas`
-  MODIFY `id_kelas` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `nilai`
---
-ALTER TABLE `nilai`
-  MODIFY `id_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `soal`
---
-ALTER TABLE `soal`
-  MODIFY `id_soal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `soal_type`
---
-ALTER TABLE `soal_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `ujian`
---
-ALTER TABLE `ujian`
-  MODIFY `id_ujian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-COMMIT;
+(2, 'Rukanda Faridsi', 'rukanda', 'ef88886f6700675eaa11a16174cc00eb', 'operator');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
