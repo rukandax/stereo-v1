@@ -11,7 +11,7 @@ if($_GET['action'] == "table_data"){
       $n = mysqli_fetch_array(mysqli_query($mysqli, "SELECT * FROM nilai WHERE nis='$r[nis]' AND id_ujian='$_GET[ujian]'"));
 		
       $row = array();
-      $row[] = $no;
+      $row[] = $no++;
       $row[] = $r['nis'];
       $row[] = $r['nama'];
 
