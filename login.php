@@ -25,26 +25,26 @@
 
 <script type="text/javascript">
 $(function(){
-   $('.alert').hide();
-   $('.login-form').submit(function(){
-      $('.alert').hide();
-      if($('input[name=username]').val() == ""){
-         $('.alert').fadeIn().html('Kotak input <b>Username</b> masih kosong!');
-      }else if($('input[name=password]').val() == ""){
-         $('.alert').fadeIn().html('Kotak input <b>Password</b> masih kosong!');
-      }else{
-         $.ajax({
-            type : "POST",
-            url : "login_cek.php",
-            data : $(this).serialize(),
-            success : function(data){
-               if(data == "ok") window.location = "index.php";  
-               else $('.alert').fadeIn().html(data);    
-            }
-         });
-      }
-      return false;
-   });
+  $('.alert').hide();
+  $('.login-form').submit(function(){
+    $('.alert').hide();
+    if($('input[name=username]').val() == ""){
+      $('.alert').fadeIn().html('Kotak input <b>Username</b> masih kosong!');
+    }else if($('input[name=password]').val() == ""){
+      $('.alert').fadeIn().html('Kotak input <b>Password</b> masih kosong!');
+    }else{
+      $.ajax({
+        type : "POST",
+        url : "login_cek.php",
+        data : $(this).serialize(),
+        success : function(data){
+          if(data == "ok") window.location = "index.php";  
+          else $('.alert').fadeIn().html(data);    
+        }
+      });
+    }
+    return false;
+  });
 });
 </script>
 
@@ -52,60 +52,54 @@ $(function(){
 <body>
 
 <body>
-
-        <!-- Top content -->
-        <div class="top-content">
-         
-            <div class="inner-bg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1><strong>Welcome to</strong> E-Assessment</h1>
-                            
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6 col-sm-offset-3 form-box">
-                           <div class="form-top">
-                              <div class="form-top-left">
-                                 <h3>Login User</h3>
-                                 <p>Enter your NIP and password to log on:</p>
-                              </div>
-                              <div class="form-top-right">
-                                 <i class="fa fa-lock"></i>
-                              </div>
-                            </div>
-                            <div class="form-bottom">
-                             
-                             <form role="form" action="" method="post" class="login-form">
-                              <div class="form-group">
-                                 <label class="sr-only" for="form-username">Username</label>
-                                    <input type="text" name="username" placeholder="NIP" class="form-username form-control" id="form-username">
-                                 </div>
-                                 <div class="form-group">
-                                    <label class="sr-only" for="form-password">Password</label>
-                                    <input type="password" name="password" placeholder="Password" class="form-password form-control" id="form-password">
-                                 </div>
-                                 <button class="btn">Sign in!</button>
-                             </form>
-
-                          </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
+  <!-- Top content -->
+  <div class="top-content">
+    <div class="inner-bg">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2 text">
+            <h1><strong>Welcome to</strong> E-Assessment</h1>
+          </div>
         </div>
+        <div class="row">
+          <div class="col-sm-6 col-sm-offset-3 form-box">
+            <div class="alert alert-danger" role="alert"></div>
+            <div class="form-top">
+              <div class="form-top-left">
+                <h3>Login User</h3>
+                <p>Enter your NIP and password to log on:</p>
+              </div>
+              <div class="form-top-right">
+                <i class="fa fa-lock"></i>
+              </div>
+            </div>
+            <div class="form-bottom">
+              <form role="form" action="" method="post" class="login-form">
+              <div class="form-group">
+                <label class="sr-only" for="form-username">Username</label>
+                  <input type="text" name="username" placeholder="NIP" class="form-username form-control" id="form-username">
+                </div>
+                <div class="form-group">
+                  <label class="sr-only" for="form-password">Password</label>
+                  <input type="password" name="password" placeholder="Password" class="form-password form-control" id="form-password">
+                </div>
+                <button class="btn">Sign in!</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-
-        <!-- Javascript -->
-        <script src="assets/js/jquery-1.11.1.min.js"></script>
-        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="assets/js/jquery.backstretch.min.js"></script>
-        <script src="assets/js/scripts.js"></script>
-        
-        <!--[if lt IE 10]>
-            <script src="assets/js/placeholder.js"></script>
-        <![endif]-->
-    </body>
+  <!-- Javascript -->
+  <script src="assets/js/jquery-1.11.1.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/js/jquery.backstretch.min.js"></script>
+  <script src="assets/js/scripts.js"></script>
+  
+  <!--[if lt IE 10]>
+      <script src="assets/js/placeholder.js"></script>
+  <![endif]-->
+</body>
 </html>
