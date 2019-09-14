@@ -1,12 +1,25 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 
 <title>E-Assessment</title>
 <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-<link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css"/>
-<link rel="stylesheet" type="text/css" href="css/login.css"/>
+<!-- CSS -->
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="assets/css/form-elements.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<!-- <link rel="stylesheet" type="text/css" href="css/login.css"/> -->
+<!-- Favicon and touch icons -->
+<link rel="shortcut icon" href="assets/ico/favicon.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
 	
 <script type="text/javascript" src="assets/jquery/jquery-2.0.2.min.js"></script>
 
@@ -25,8 +38,8 @@ $(function(){
             url : "login_cek.php",
             data : $(this).serialize(),
             success : function(data){
-               if(data == "ok") window.location = "index.php";	
-               else $('.alert').fadeIn().html(data);	
+               if(data == "ok") window.location = "index.php";  
+               else $('.alert').fadeIn().html(data);    
             }
          });
       }
@@ -35,45 +48,64 @@ $(function(){
 });
 </script>
 
-
-
 </head>
 <body>
 
-<div class="container-fluid"> 	
-   <div class="row">
-      <div class="col-md-4 col-md-offset-4">
+<body>
 
-<div class="alert alert-danger" role="alert"> </div>
-		
-<div class="list-group">
-   <div class="list-group-item active">
-      <h3 class="text-center">Login Ujian</h3>
-   </div>
-   <div class="list-group-item list-group-item-info">
-				  
-<form class="login-form">   
-   <div class="input-group">
-      <div class="input-group-addon"><i class="glyphicon glyphicon-user"></i></div>
-      <input type="text" name="username" placeholder="NIP" autofocus class="form-control">
-   </div><br/>
-	
-   <div class="input-group">
-      <div class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></div>
-      <input type="password" name="password" placeholder="Password" class="form-control">
-   </div><br/>
-	
-   <button class="btn btn-primary pull-right login-button">
-      <i class="glyphicon glyphicon-log-in"></i> Login Ujian
-   </button><br/>
-</form>
- 
-   </div>
-</div>
+        <!-- Top content -->
+        <div class="top-content">
+         
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 text">
+                            <h1><strong>Welcome to</strong> E-Assessment</h1>
+                            
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box">
+                           <div class="form-top">
+                              <div class="form-top-left">
+                                 <h3>Login User</h3>
+                                 <p>Enter your NIP and password to log on:</p>
+                              </div>
+                              <div class="form-top-right">
+                                 <i class="fa fa-lock"></i>
+                              </div>
+                            </div>
+                            <div class="form-bottom">
+                             
+                             <form role="form" action="" method="post" class="login-form">
+                              <div class="form-group">
+                                 <label class="sr-only" for="form-username">Username</label>
+                                    <input type="text" name="username" placeholder="NIP" class="form-username form-control" id="form-username">
+                                 </div>
+                                 <div class="form-group">
+                                    <label class="sr-only" for="form-password">Password</label>
+                                    <input type="password" name="password" placeholder="Password" class="form-password form-control" id="form-password">
+                                 </div>
+                                 <button class="btn">Sign in!</button>
+                             </form>
 
-      </div>
-   </div>
-</div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
 
-</body>
+
+        <!-- Javascript -->
+        <script src="assets/js/jquery-1.11.1.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.backstretch.min.js"></script>
+        <script src="assets/js/scripts.js"></script>
+        
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+    </body>
 </html>
