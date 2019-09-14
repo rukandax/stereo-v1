@@ -52,8 +52,6 @@ $(function(){
 <body>
 
 <body>
-  <div class="alert alert-danger" role="alert"> </div>
-
   <!-- Top content -->
   <div class="top-content">
     
@@ -67,6 +65,7 @@ $(function(){
         </div>
         <div class="row">
           <div class="col-sm-6 col-sm-offset-3 form-box">
+            <div class="alert alert-danger" role="alert"></div>
             <div class="form-top">
               <div class="form-top-left">
                 <h3>Login Administrator</h3>
