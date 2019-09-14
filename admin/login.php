@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(!empty($_SESSION['username']) and !empty($_SESSION['password']) ){
+  header('location: index.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
