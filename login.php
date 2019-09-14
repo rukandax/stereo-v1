@@ -29,7 +29,7 @@ $(function(){
    $('.login-form').submit(function(){
       $('.alert').hide();
       if($('input[name=username]').val() == ""){
-         $('.alert').fadeIn().html('Kotak input <b>Username</b> masih kosong!');
+         $('.alert').fadeIn().html('Kotak input <b>NIP</b> masih kosong!');
       }else if($('input[name=password]').val() == ""){
          $('.alert').fadeIn().html('Kotak input <b>Password</b> masih kosong!');
       }else{
