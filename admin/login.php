@@ -79,7 +79,7 @@ $(function(){
               <form role="form" action="" method="post" class="login-form">
               <div class="form-group">
                 <label class="sr-only" for="form-username">Username</label>
-                  <input type="text" name="username" placeholder="NIP" class="form-username form-control" id="form-username">
+                  <input type="text" name="username" placeholder="Username" class="form-username form-control" id="form-username">
                 </div>
                 <div class="form-group">
                   <label class="sr-only" for="form-password">Password</label>
