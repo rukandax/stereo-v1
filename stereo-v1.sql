@@ -179,7 +179,7 @@ CREATE TABLE `ujian` (
 --
 
 INSERT INTO `ujian` (`id_ujian`, `judul`, `tanggal`, `waktu`, `jml_soal`) VALUES
-(1, 'Assesment CMLD - 29 Aug 2019', '2019-09-01', 60, 8);
+(1, 'Assesment CMLD - 29 Aug 2019', '2019-09-14', 30, 12);
 
 -- --------------------------------------------------------
 

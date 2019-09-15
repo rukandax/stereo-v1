@@ -22,6 +22,7 @@ if($_SESSION['leveluser'] == "admin"){
    echo menu_admin("view/view_siswa.php", "list-alt", "Peserta");
    echo menu_admin("view/view_ujian_teacher.php", "edit", "Soal & Hasil");
    echo menu_admin("view/view_user.php", "user", "Admin");
+   echo menu_admin("view/view_departemen.php", "th", "Departemen");
    echo menu_admin("view/view_kelas.php", "signal", "Divisi");
    echo menu_admin("view/view_klsujian.php", "sort-by-attributes", "Divisi Ujian");
 }

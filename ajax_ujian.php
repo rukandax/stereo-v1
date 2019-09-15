@@ -9,14 +9,14 @@ if(empty($_SESSION['username']) or empty($_SESSION['password']) ){
 //Memproses data ajax ketika memilih salah satu jawaban
 if($_GET['action']=="kirim_jawaban"){
    $rnilai = mysqli_fetch_array(mysqli_query($mysqli, "SELECT * FROM nilai WHERE id_ujian='$_POST[ujian]' AND nis='$_SESSION[nis]'"));
-	
+
    $jawaban = explode(",", $rnilai['jawaban']);
-   $index = $_POST['index'];	
+   $index = $_POST['index'];
    $jawaban[$index] = $_POST['jawab'];
-	
+
    $jawabanfix = implode(",", $jawaban);
    mysqli_query($mysqli, "UPDATE nilai SET jawaban='$jawabanfix', sisa_waktu='$_POST[sisa_waktu]' WHERE id_ujian='$_POST[ujian]' AND nis='$_SESSION[nis]'");
-	
+
    echo "ok";
 }
 
@@ -55,9 +55,9 @@ elseif($_GET['action']=="selesai_ujian"){
 
    $query = "UPDATE nilai SET jml_benar='$jbenarencode', nilai='$nilaiencode' WHERE id_ujian='$_POST[ujian]' AND nis='$_SESSION[nis]'";
    mysqli_query($mysqli, $query);
-   
+
    mysqli_query($mysqli, "UPDATE siswa SET status='login' WHERE nis='$_SESSION[nis]'");
-   
+
    echo "ok";
 }
 ?>
