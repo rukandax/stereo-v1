@@ -10,9 +10,9 @@
     <ul class="nav navbar-nav">
 
 <?php
-	
-function menu_admin($link, $icon, $title){
-   $item = '<li><a href="'.$link.'" class="navigation"><i class="glyphicon glyphicon-'.$icon.'"></i> '.$title.'</a></li>';
+
+	function menu_admin($link, $icon, $title){
+   $item = '<li><a href="'.$link.'" class="navigation" style="color:#fff"><i class="glyphicon glyphicon-'.$icon.'"></i> '.$title.'</a></li>';
    return $item;
 }
 
