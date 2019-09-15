@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 02, 2019 at 02:47 PM
+-- Generation Time: Sep 14, 2019 at 03:29 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -19,6 +19,25 @@ SET time_zone = "+00:00";
 --
 -- Database: `stereo-v1`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `departemen`
+--
+
+CREATE TABLE IF NOT EXISTS `departemen` (
+  `id_departemen` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_departemen` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_departemen`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `departemen`
+--
+
+INSERT INTO `departemen` (`id_departemen`, `nama_departemen`) VALUES
+(2, 'Risk & Credit School');
 
 -- --------------------------------------------------------
 
@@ -74,14 +93,15 @@ CREATE TABLE IF NOT EXISTS `nilai` (
   `jml_benar` text,
   `nilai` text,
   PRIMARY KEY (`id_nilai`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `nilai`
 --
 
 INSERT INTO `nilai` (`id_nilai`, `nis`, `id_ujian`, `acak_soal`, `jawaban`, `sisa_waktu`, `jml_benar`, `nilai`) VALUES
-(1, '123456', 1, '3,6,5,2,8,4,1,7', '3,3,1,2,4,4,1,2', '58:27', '{\"1\":2,\"2\":2,\"3\":2,\"4\":2}', '{\"1\":100,\"2\":100,\"3\":100,\"4\":100}');
+(1, '123456', 1, '3,6,5,2,8,4,1,7', '3,3,1,2,4,4,1,2', '58:27', '{"1":2,"2":2,"3":2,"4":2}', '{"1":100,"2":100,"3":100,"4":100}'),
+(3, '11111', 1, '16,10,17,9,14,19,11,18,12,13,20,15', '3,2,4,4,3,2,2,1,4,1,4,4', '27:52', '{"1":0,"2":1,"3":2,"4":1}', '{"1":0,"2":33.333333333333,"3":66.666666666667,"4":33.333333333333}');
 
 -- --------------------------------------------------------
 
@@ -193,7 +213,7 @@ CREATE TABLE IF NOT EXISTS `ujian` (
 --
 
 INSERT INTO `ujian` (`id_ujian`, `judul`, `tanggal`, `waktu`, `jml_soal`) VALUES
-(1, 'Assesment CMLD - 29 Aug 2019', '2019-09-01', 60, 8);
+(1, 'Assesment CMLD - 29 Aug 2019', '2019-09-14', 30, 12);
 
 -- --------------------------------------------------------
 
@@ -209,7 +229,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `level` text NOT NULL,
   PRIMARY KEY (`id_user`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `user`
