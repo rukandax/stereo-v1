@@ -72,11 +72,10 @@ input[type=radio]:checked ~ .huruf{
 .konten-ujian, .nomor-ujian{
    border: 1px solid #eee;
    padding: 10px;
-   height: 100%;	
 }
 .blok-soal .box{
-   height: 400px;
-   overflow-y: auto;
+   min-height: 400px;
+   overflow-y: visible;
    overflow-x: hidden;
 }
 

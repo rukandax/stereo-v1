@@ -59,9 +59,9 @@ for($s=0; $s<count($arr_soal); $s++){
    $active = ($no==1) ? "active" : "";
    echo '<div class="blok-soal soal-'.$no.' '.$active.'">
 <div class="box">
-<div class="row">
+<div class="row" style="margin-bottom: 15px">
    <div class="col-xs-1"><div class="nomor">'.$no.'</div></div>
-   <div class="col-xs-11"><div class="soal">'.$soal.'</div> </div>
+   <div class="col-xs-10" style="margin-left: 15px;"><div class="soal">'.$soal.'</div> </div>
 </div>';
 
 //6 Membuat array pilihan dan mengacak pilihan
@@ -79,11 +79,11 @@ for($s=0; $s<count($arr_soal); $s++){
       $checked = ($arr_jawaban[$s] == $arr_pilihan[$i]['no']) ? "checked" : "";
       $pilihan = str_replace("../media", "media", $arr_pilihan[$i]['pilihan']);
       echo '<div class="row pilihan">
-<div class="col-xs-1 col-xs-offset-1">
+<div class="col-xs-2 col-md-offset-1">
    <input type="radio" name="jawab-'.$no.'" id="huruf-'.$no.'-'.$i.'" '.$checked.'>
    <label for="huruf-'.$no.'-'.$i.'" class="huruf" onclick="kirim_jawaban('.$s.', '.$arr_pilihan[$i]['no'].')"> '.$arr_huruf[$i].' </label>
 </div>
-<div class="col-xs-10">
+<div class="col-xs-9">
    <div class="teks">'.$pilihan.' </div> 
 </div>
 </div>';
@@ -95,8 +95,8 @@ for($s=0; $s<count($arr_soal); $s++){
    $sebelumnya = $no-1;
    if($no != 1) echo '<a class="btn btn-primary btn-blockl" onclick="tampil_soal('.$sebelumnya.')">Sebelumnya</a>';
    echo '</div>
-   <div class="col-md-4 col-md-offset-1"><label class="btn btn-warning btn-block"> <input type="checkbox" autocomplete="off" onchange="ragu_ragu('.$no.')"> Ragu-ragu </label></div>	
-<div class="col-md-3 col-md-offset-1">';
+   <div class="col-md-4 col-md-offset-1" style="margin-bottom: 15px;"><label class="btn btn-warning btn-block"> <input type="checkbox" autocomplete="off" onchange="ragu_ragu('.$no.')"> Ragu-ragu </label></div>	
+<div class="col-md-3 col-md-offset-1" style="margin-bottom: 15px;">';
 	
    $berikutnya = $no+1;
    if($no != count($arr_soal)) echo '<a class="btn btn-primary btn-block" onclick="tampil_soal('.$berikutnya.')"> Berikutnya </a>';

@@ -12,28 +12,32 @@ $ujian = mysqli_fetch_array(mysqli_query($mysqli, "SELECT * FROM ujian WHERE id_
 
 <h3 class="page-header"><i class="glyphicon glyphicon-user"></i> Data Peserta dan Ujian</h3>
 <div class="row">
-   <div class="col-md-3">NIP</div>
-   <div class="col-md-9">: <b><?= $_SESSION['nis']; ?> </b> </div>
+   <div class="col-xs-4">NIP</div>
+   <div class="col-xs-8">: <b><?= $_SESSION['nis']; ?> </b> </div>
 </div><br/>
 <div class="row">
-   <div class="col-md-3">Nama Lengkap</div>
-   <div class="col-md-9">: <b><?= $_SESSION['namalengkap']; ?> </b></div>
+   <div class="col-xs-4">Nama Lengkap</div>
+   <div class="col-xs-8">: <b><?= $_SESSION['namalengkap']; ?> </b></div>
 </div><br/>
 <div class="row">
-   <div class="col-md-3">Divisi</div>
-   <div class="col-md-9">: <b><?= $kelas['kelas']; ?></b></div>
+   <div class="col-xs-4">Divisi</div>
+   <div class="col-xs-8">: <b><?= $kelas['kelas']; ?></b></div>
 </div><br/>
 <div class="row">
-   <div class="col-md-3">Jml. Soal</div>
-   <div class="col-md-9">: <b><?= $ujian['jml_soal']; ?></b></div>
+   <div class="col-xs-4">Assessment</div>
+   <div class="col-xs-8">: <b><?= $ujian['judul']; ?></b></div>
 </div><br/>
 <div class="row">
-   <div class="col-md-3">Waktu Mengerjakan</div>
-   <div class="col-md-9">: <b><?= $ujian['waktu']; ?> menit</b></div>
+   <div class="col-xs-4">Jml. Soal</div>
+   <div class="col-xs-8">: <b><?= $ujian['jml_soal']; ?></b></div>
+</div><br/>
+<div class="row">
+   <div class="col-xs-4">Waktu Mengerjakan</div>
+   <div class="col-xs-8">: <b><?= $ujian['waktu']; ?> menit</b></div>
 </div><br/>
 
 <div class="row">
-   <div class="col-md-12">
+   <div class="col-xs-12">
 
 <?php	
 //Jika nilai sudah ada tampilkan tombol Sudah Mengerjakan, jika belum ada tampilkan tombol Masuk Ujian
