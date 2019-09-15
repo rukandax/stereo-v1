@@ -31,9 +31,9 @@ if(empty($_SESSION['username']) or empty($_SESSION['password']) or $_SESSION['lo
 <script type="text/javascript" src="../assets/jquery/jquery-2.0.2.min.js"></script>
 
 </head>
-<body>
+<body style="background-color: #f9fbfd">
 
-<nav class="navbar navbar-default navbar-fixed-top"> 
+<nav class="navbar navbar-default navbar-fixed-top" style="background-image: linear-gradient(-90deg, #6A84DA, #4B71E2);"> 
    <div class="container">
       <?php include "menu.php"; ?> 
    </div>
