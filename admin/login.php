@@ -66,13 +66,14 @@ $(function(){
                     </div>
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
+                          <div class="alert alert-danger" role="alert"></div>
                            <div class="form-top">
                               <div class="form-top-left">
                                  <h3>Login Administrator</h3>
                                  <p>Enter your username and password to log on:</p>
                               </div>
                               <div class="form-top-right">
-                                 <i class="fa fa-lock"></i>
+                                 <img src="../images/fix-logo.png">
                               </div>
                             </div>
                             <div class="form-bottom">
