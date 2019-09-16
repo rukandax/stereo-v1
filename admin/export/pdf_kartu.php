@@ -35,7 +35,7 @@ while($r = mysqli_fetch_array($query)){
    
 <tr class='header'>
    <td width='60' align='center'>
-      <img src='../../images/logo.png' width='50'>
+      <img src='../../images/logo.jpg' width='50'>
    </td>
    <td width='130' align='center' valign='middle' style='padding: 5px 30px;'>
    <b>KARTU PESERTA UJIAN</b>
@@ -44,7 +44,7 @@ while($r = mysqli_fetch_array($query)){
 				
 <tr><td>Nama</td><td>: $r[nama]</td></tr>
 <tr><td>Divisi</td><td>: $kls[kelas]</td></tr>
-<tr><td>Username</td><td>: <b>$r[nis]</b></td></tr>
+<tr><td>NIP</td><td>: <b>$r[nis]</b></td></tr>
 <tr><td>Password</td><td>: <b>$password</b></td></tr>
 
 </table>
