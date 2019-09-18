@@ -76,7 +76,7 @@ $(function(){
                 <p>Enter your NIP and password to log on:</p>
               </div>
               <div class="form-top-right">
-                <i class="fa fa-lock"></i>
+                <img src="images/fix-logo.jpg">
               </div>
             </div>
             <div class="form-bottom">
