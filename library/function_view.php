@@ -12,8 +12,8 @@ function create_button($color, $icon, $text, $class = "", $action=""){
 //Fungsi untuk membuat tabel
 function create_table($header){
    echo'<hr/><div class="table-responsive">
-   <table class="table table-striped" width="100%">
-   <thead><tr>
+   <table class="table table-bordered" width="100%">
+   <thead style="background-image: linear-gradient(-90deg, #6A84DA, #4B71E2); color:#fff"><tr>
    <th style="width: 10px">No</th>';
 
 foreach($header as $h){
