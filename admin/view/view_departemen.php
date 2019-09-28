@@ -13,6 +13,7 @@ include "../../library/function_form.php";
 
 create_title("th", "Departemen");
 create_button("success", "plus-sign", "Tambah", "btn-add", "form_add()");
+create_button("info", "file", "Export", "Export Ke Excel", "form_export()");
 
 create_table(array("Nama Departemen", "Aksi"));
 

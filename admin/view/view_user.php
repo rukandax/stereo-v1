@@ -13,6 +13,7 @@ include "../../library/function_form.php";
 //Membuat judul dan tombol tambah user
 create_title("user", "Manajemen User");
 create_button("success", "plus-sign", "Tambah", "btn-add", "form_add()");
+create_button("info", "file", "Export", "Export Ke Excel", "form_export()");
 
 //Membuat header dan footer tabel
 create_table(array("Nama", "Username", "Level", "Aksi"));
