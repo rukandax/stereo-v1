@@ -27,6 +27,10 @@ if(empty($_SESSION['username']) or empty($_SESSION['password']) or $_SESSION['lo
 <link rel="stylesheet" type="text/css" href="../assets/bootstrap/css/bootstrap.min.css"/>
 <link type="text/css" rel="stylesheet" href="../assets/dataTables/css/dataTables.bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../css/admin.css"/>
+<!-- Ion Icon -->
+<link rel="stylesheet" href="../assets/Ionicons/css/ionicons.min.css">
+<!-- Gaya Tema -->
+<link rel="stylesheet" href="../assets/AdminLTE/AdminLTE.min.css">
 	
 <script type="text/javascript" src="../assets/jquery/jquery-2.0.2.min.js"></script>
 
