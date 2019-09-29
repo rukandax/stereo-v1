@@ -100,7 +100,7 @@ for($s=0; $s<count($arr_soal); $s++){
 	
    $berikutnya = $no+1;
    if($no != count($arr_soal)) echo '<a class="btn btn-primary btn-block" onclick="tampil_soal('.$berikutnya.')"> Berikutnya </a>';
-   else echo '<a class="btn btn-danger btn-block" onclick="selesai()"> Selesai </a>';
+   else echo '<a class="btn btn-success btn-block" onclick="selesai()"> Selesai </a>';
 
    echo '</div></div></div>';
 }
@@ -130,8 +130,8 @@ echo '<div class="modal fade" id="modal-selesai" tabindex="-1" role="dialog" ari
 </div>
 		
 <div class="modal-footer">
-   <button type="submit" class="btn btn-danger" onclick="return selesai_ujian('.$_GET['ujian'].')"> Selesai </button>
-   <button type="button" class="btn btn-warning" data-dismiss="modal"> Batal </button>
+   <button type="submit" class="btn btn-success" onclick="return selesai_ujian('.$_GET['ujian'].')"> Selesai </button>
+   <button type="button" class="btn btn-danger" data-dismiss="modal"> Batal </button>
 </div>
 		
 </form></div></div></div>';
