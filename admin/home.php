@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+require_once "../library/config.php";
 if(empty($_SESSION['username']) or empty ($_SESSION['password'])){
    header('location: login.php');
 }
@@ -20,8 +20,16 @@ if(empty($_SESSION['username']) or empty ($_SESSION['password'])){
         <div class="col-lg-3 col-xs-6">
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>5</h3>
-              <p>Data Peserta</p>
+            
+            <?php
+            $sqlCommandPeserta = "SELECT COUNT(*) FROM siswa"; 
+            $query = mysqli_query($mysqli, $sqlCommandPeserta) or die (mysqli_error()); 
+            $row = mysqli_fetch_row($query);
+            echo "<h3>". $row[0] ."</h3>";
+            echo "<p>Data Peserta</p>";
+            mysqli_free_result($query); 
+            ?>
+
             </div>
             <div class="icon">
               <i class="ion ion-person"></i>
@@ -33,7 +41,7 @@ if(empty($_SESSION['username']) or empty ($_SESSION['password'])){
         <div class="col-lg-3 col-xs-6">
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>5</h3>
+              <h3>2</h3>
               <p>Data Departemen</p>
             </div>
             <div class="icon">
@@ -46,8 +54,16 @@ if(empty($_SESSION['username']) or empty ($_SESSION['password'])){
         <div class="col-lg-3 col-xs-6">
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>40</h3>
-              <p>Data Divisi</p>
+              
+            <?php
+            $sqlCommandDivisi = "SELECT COUNT(*) FROM kelas"; 
+            $query = mysqli_query($mysqli, $sqlCommandDivisi) or die (mysqli_error()); 
+            $row = mysqli_fetch_row($query);
+            echo "<h3>". $row[0] ."</h3>";
+            echo "<p>Data Divisi</p>";
+            mysqli_free_result($query); 
+            ?>
+
             </div>
             <div class="icon">
               <i class="ion ion-android-contacts"></i>
@@ -59,8 +75,16 @@ if(empty($_SESSION['username']) or empty ($_SESSION['password'])){
         <div class="col-lg-3 col-xs-6">
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>23</h3>
-              <p>Bank Soal</p>
+              
+            <?php
+            $sqlCommandSoal = "SELECT COUNT(*) FROM soal"; 
+            $query = mysqli_query($mysqli, $sqlCommandSoal) or die (mysqli_error()); 
+            $row = mysqli_fetch_row($query);
+            echo "<h3>". $row[0] ."</h3>";
+            echo "<p>Bank Soal</p>";
+            mysqli_free_result($query); 
+            ?>
+
             </div>
             <div class="icon">
               <i class="ion ion-compose"></i>
