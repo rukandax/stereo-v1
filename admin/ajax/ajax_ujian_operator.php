@@ -17,7 +17,11 @@ if($_GET['action'] == "table_data"){
          if($rk['aktif']=='Y') $class = 'btn-danger';
          else $class = 'btn-primary';
          $label .= '<a class="btn btn-sm '.$class.'" onclick="edit_data('.$rk['id_kelas'].','.$rk['id_ujian'].')">'.$rk['kelas'].'</a> ';
+         $label .= '<a class="btn glyphicon glyphicon-envelope '.$class.'" onclick="edit_data('.$rk['null'].','.$rk['null'].')">'.$rk['null'].'</a> ';
+         
       }
+
+
       
       $row = array();
       $row[] = $no;
@@ -36,5 +40,6 @@ elseif($_GET['action'] == "update"){
    $cek = mysqli_fetch_array(mysqli_query($mysqli, "SELECT * FROM kelas_ujian WHERE id_ujian='$_GET[ujian]' AND id_kelas='$_GET[kelas]'"));
    $aktif = ($cek['aktif']=='Y') ? 'N' : 'Y';
    mysqli_query($mysqli, "UPDATE kelas_ujian set aktif='$aktif' WHERE id_ujian='$_GET[ujian]' AND id_kelas='$_GET[kelas]'");
+
 }
 ?>

@@ -18,6 +18,7 @@ include "../../library/function_form.php";
 create_title("list", "Manajemen Soal");
 create_button("success", "plus-sign", "Tambah", "btn-add", "form_add()");
 create_button("primary", "import", "Import", "btn-import", "form_import()");
+create_button("info", "file", "Export", "Export Ke Excel", "form_export()");
 
 //Menampilkan detail ujian
 $ru = mysqli_fetch_array(mysqli_query($mysqli, "SELECT * FROM ujian WHERE id_ujian='$_GET[ujian]'"));

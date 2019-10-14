@@ -9,7 +9,7 @@ if(empty($_SESSION['username']) or empty($_SESSION['password']) or ($_SESSION['l
 include "../../library/config.php";
 include "../../library/function_view.php";
 
-create_title("edit", "Manajemen Ujian");
+create_title("edit", "Manajemen Assessment");
 
 echo '<hr/><div class="alert alert-info"><ul>
 <li>Klik tombol edit pada kolom Bank Soal untuk mengatur soal!</li>
